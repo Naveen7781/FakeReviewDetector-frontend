@@ -16,7 +16,7 @@ const ReviewForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ link }),
+        body: JSON.stringify({ review_text: link }), // ✅ Send correct request format
       });
 
       if (!response.ok) {
@@ -24,7 +24,7 @@ const ReviewForm = () => {
       }
 
       const data = await response.json();
-      setResult(data.prediction);
+      setResult(data.result); // ✅ Extract correct response key
     } catch (err) {
       setError("Error connecting to server. Please try again.");
     }
@@ -48,7 +48,7 @@ const ReviewForm = () => {
       </form>
       {result && (
         <div className="mt-4 p-2 text-center font-semibold border rounded bg-gray-100">
-          Fake Review Percentage: {result}%
+          Review Status: {result}
         </div>
       )}
       {error && <div className="mt-4 text-red-500">{error}</div>}
