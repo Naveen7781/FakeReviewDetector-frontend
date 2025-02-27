@@ -24,7 +24,7 @@ const ReviewForm = () => {
       }
 
       const data = await response.json();
-      setResult(data.result);
+      setResult(data.prediction);
     } catch (err) {
       setError("Error connecting to server. Please try again.");
     }
@@ -37,18 +37,18 @@ const ReviewForm = () => {
         <input
           type="text"
           className="w-full p-2 border rounded mb-4"
-          placeholder="Enter review link"
+          placeholder="Enter product link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
           required
         />
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-          Check Review
+          Check Reviews
         </button>
       </form>
       {result && (
         <div className="mt-4 p-2 text-center font-semibold border rounded bg-gray-100">
-          Review Status: {result}
+          Fake Review Percentage: {result}%
         </div>
       )}
       {error && <div className="mt-4 text-red-500">{error}</div>}
