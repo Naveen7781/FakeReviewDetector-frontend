@@ -8,28 +8,22 @@ export default function Home() {
     try {
       const response = await fetch("/api/detect", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ link }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
-        alert(`This review is ${data.fake ? "FAKE" : "REAL"}`);
+        console.log("Fake Review Probability:", data.fakeProbability);
+        alert(`Fake Review Probability: ${(data.fakeProbability * 100).toFixed(2)}%`);
       } else {
-        alert(`Error: ${data.error}`);
+        console.error("Error:", data.error);
+        alert("Error: " + data.error);
       }
     } catch (error) {
-      console.error("Error submitting review:", error);
-      alert("Server error. Try again.");
+      console.error("Request failed:", error);
+      alert("Failed to analyze the review.");
     }
   };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <ReviewForm onSubmit={handleReviewSubmit} />
-    </div>
-  );
-}
+}  
