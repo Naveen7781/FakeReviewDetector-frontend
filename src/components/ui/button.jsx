@@ -7,10 +7,10 @@ const Button = ({ className, variant = "default", size = "default", asChild, ...
   const baseStyles = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
   
   const variantStyles = {
-    default: "bg-blue-500 text-white hover:bg-blue-600",
-    destructive: "bg-red-500 text-white hover:bg-red-600",
+    default: "bg-blue-500 text-black hover:bg-blue-600",
+    destructive: "bg-red-500 text-black hover:bg-red-600",
     outline: "border border-gray-300 bg-white hover:bg-gray-100",
-    secondary: "bg-gray-500 text-white hover:bg-gray-600",
+    secondary: "bg-gray-500 text-black hover:bg-gray-600",
     ghost: "hover:bg-gray-100",
     link: "text-blue-500 underline hover:text-blue-700",
   };

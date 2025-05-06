@@ -1,26 +1,26 @@
-// src/Home.jsx
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+    navigate("/detect");
+  };
+
   return (
-    <div className="max-w-2xl mx-auto p-8 mt-10 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4 text-center">Fake Product Review Detection</h1>
-      <p className="mb-6 text-gray-700">
-        Our platform analyzes reviews from e-commerce product pages using a machine learning model trained on real and fake reviews. It helps customers make smarter buying decisions by identifying suspicious content.
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8">
+      <h1 className="text-3xl font-bold mb-4 text-center">Fake Product Review Detector</h1>
+      <p className="text-lg text-center mb-6 max-w-xl">
+        This tool helps customers verify the authenticity of product reviews before making a purchase.
+        Simply paste a product link from Amazon, and our AI-powered system will analyze and tell you
+        if the reviews are mostly genuine or fake.
       </p>
-      <ul className="list-disc list-inside mb-6 text-gray-700">
-        <li>Paste a product link</li>
-        <li>We extract all reviews from that page</li>
-        <li>Our model checks for patterns of fake reviews</li>
-        <li>You get a report on the likelihood of fake reviews</li>
-      </ul>
-      <div className="text-center">
-        <Link to="/detect">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-            Get Started
-          </button>
-        </Link>
-      </div>
+      <button
+        onClick={handleStart}
+        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+      >
+        Start Checking Reviews
+      </button>
     </div>
   );
 };
